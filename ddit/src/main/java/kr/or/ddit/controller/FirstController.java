@@ -2,6 +2,7 @@ package kr.or.ddit.controller;
 
 
 import kr.or.ddit.dto.ArticleForm;
+import kr.or.ddit.entity.Article;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -96,6 +97,11 @@ public class FirstController {
         //로깅을 사용하기 위해 클래스 명 위에 Slf4j를 사용함.
         log.info("createArticle->form : "+form);
 
+
+        //1. DTO(ArticleForm)를 엔티티(Article)로 변환
+        Article article = form.toEntity();
+
+        //2. 리파지터리로 엔티티를 DB에 저장
 
         //get방식으로 /article/new URL을 재용청
         return "redirect:/articles/new";
