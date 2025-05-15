@@ -121,7 +121,7 @@ public class FirstController {
         log.info("createArticle->saved : "+saved);//Entity
 
         //get방식으로 /article/new URL을 재용청
-        return "redirect:/articles/new";
+        return "redirect:/articles/"+saved.getId();
     }
 
     //데이터 조회 요청 접수

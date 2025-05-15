@@ -6,12 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>글 상세보기</h2>
+    <h2>상품분류 상세보기</h2>
     <table class="table">
         <tr>
             <th>Id</th>
-            <th>Tittle</th>
-            <th>Content</th>
+            <th>상품분류 코드</th>
+            <th>상품분류 명</th>
         </tr>
         <!--
         articleEntity : Article(id=1, title=개똥이의 모험, content=즐거운 모험)
@@ -19,14 +19,14 @@
 
         article의 사용 범위 내에 article에 담긴 id, title, content의 값으로 치환
         -->
-    {{#article}}
+    {{#lprodEntity}}
         <tr>
-            <td>{{id}}</td>
-            <td>{{title}}</td>
-            <td>{{content}}</td>
+            <td>{{lprodId}}</td>
+            <td>{{lprodGu}}</td>
+            <td>{{lprodNm}}</td>
         </tr>
-    {{/article}}
+    {{/lprodEntity}}
     </table>
-    <a href="/articles" class="btn btn-primary">목록</a>
+    <a href="/lprods" class="btn btn-primary">목록</a>
 </body>
 </html>
