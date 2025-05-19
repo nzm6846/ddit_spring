@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css" />
+    <title>new</title>
+</head>
+<body>
+    <!--
+    요청URI : /articles/new
+    요청파라미터 :
+    요청방식 : get
+    -->
+
+    <!-- 폼페이지 -->
+    <!-- ///// body 시작 ///// -->
+    <!--
+    action : 요청URL. localhost:8030/articles/create 페이지로 폼 데이터를 보낸다는 의미
+    method : 속성 값으로 get과 post, 2가지를 설정할 수 있음.
+
+    요청 URI : /articles/create
+    요청 파라미터 : request{lprodId = 1, lprodGu = P101, lprodNm = 컴퓨터 제품}
+    요청 방식 : post
+
+    1. DTO 만들기
+    2. LprodController.java -> Controller
+    2-1. 폼을 띄울 Get방식 요청(/lprod/new) Mapping. newArticleForm() 메소드
+            return "lprod/new"; // forwarding
+    2-2. submit처리 . createLprod() 메소드.
+            return "redirect:/lprod/new"
+    -->
+    <form class="container" action="/lprod/update" method="post">
+        <input type="hidden" name="lprodId" value="{{lprodEntity.lprodId}}"/>
+        <div class="mb-3">
+            <label class="form-label">상품분류 코드</label>
+            <input type="text" class="form-control" name="lprodGu" placeholder="입력" value="{{lprodEntity.lprodGu}}"/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">상품분류명</label>
+            <input type="text" class="form-control" name="lprodNm" placeholder="입력" value="{{lprodEntity.lprodNm}}"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/lprod/{{lprodEntity.lprodId}}" class="btn btn-secondary">뒤로가기</a>
+    </form>
+    <!-- ///// body 끝 ///// -->
+</body>
+</html>

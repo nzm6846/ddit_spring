@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css" />
+    <title>Document</title>
+</head>
+<body>
+    <h2>상품분류 상세보기</h2>
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>상품분류 코드</th>
+            <th>상품분류 명</th>
+        </tr>
+        <!--
+        articleEntity : Article(id=1, title=개똥이의 모험, content=즐거운 모험)
+        model.addAttribute("article",articleEntity);
+
+        article의 사용 범위 내에 article에 담긴 id, title, content의 값으로 치환
+        -->
+    {{#lprodEntity}}
+        <tr>
+            <td>{{lprodId}}</td>
+            <td>{{lprodGu}}</td>
+            <td>{{lprodNm}}</td>
+        </tr>
+    {{/lprodEntity}}
+    </table>
+    <a href="/lprods" class="btn btn-primary">목록</a>
+</body>
+</html>
