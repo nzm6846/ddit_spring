@@ -3,6 +3,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css" />
+    <!-- jQuery -->
+    <script src="/adminlte/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(function(){
+            //아작나써유 // (피)씨다타써
+            //contentType : 보내는 타입
+            //dataType : 응답이연
+            $.ajax({
+                url:"/api/articles/2",
+                type:"get",
+                dataType:"json",
+                success:function(result){
+                    console.log("result : ", result);
+                }
+            })
+        })
+    </script>
     <title>Document</title>
 </head>
 <body>

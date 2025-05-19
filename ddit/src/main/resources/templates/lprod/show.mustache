@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css" />
+    <title>Document</title>
+</head>
+<body>
+    <h2>상품분류 상세보기</h2>
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>상품분류 코드</th>
+            <th>상품분류 명</th>
+        </tr>
+        <!--
+        lprodEntity : Lprod(lprodId=1, lprodGu=P101, lprodNm=컴퓨터제품)
+        model.addAttribute("lprod",lprodEntity);
+
+        lprod의 사용 범위 내에 lprod에 담긴 id, lprodGu, lprodNm의 값으로 치환
+
+        model.addAttribute("lprod",lprodEntity);
+        -->
+        {{#lprod}}
+            <tr>
+                <td>{{lprodId}}</td>
+                <td>{{lprodGu}}</td>
+                <td>{{lprodNm}}</td>
+            </tr>
+        {{/lprod}}
+    </table>
+    <a href="/lprods" class="btn btn-primary">목록</a>
+</body>
+</html>

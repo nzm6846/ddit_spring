@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css" />
+    <title>Document</title>
+</head>
+<body>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <!-- ///// body 시작 ///// -->
+        <!-- msg 사용 범위 설정 시작 -->
+
+            <div class="alert alert-primary alert-dismissible"><!-- 메시지 창 작성 -->
+
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">Close</button>
+            </div>
+
+        <!-- msg 사용 범위 설정 끝 -->
+        <table class="table">
+            <tr>
+                <th scope="col">상품분류 아이디</th>
+                <th scope="col">상품분류 구분코드</th>
+                <th scope="col">상품분류 명</th>
+            </tr>
+            <!-- model.addAttribute("lprodList", lprodEntityList);
+            lprodEntityList 반복하면서
+            lprodEntity : Lprod(lprodId=1, lprodGu=P101, lprodNm=즐거운 모험1)
+            lprodEntity : Lprod(lprodId=2, lprodGu=P102, lprodNm=즐거운 모험2)
+            lprodEntity : Lprod(lprodId=3, lprodGu=P201, lprodNm=즐거운 모험3)
+            -->
+            {{#lprodList}}
+                <tr>
+                    <td>{{lprodId}}</td>
+                    <td><a href="/lprod/{{lprodId}}">{{lprodGu}}</a></td>
+                    <td>{{lprodNm}}</td>
+                </tr>
+            {{/lprodList}}
+        </table>
+        <a href="/lprod/new" class="btn btn-primary">상품분류 생성</a>
+        <!-- ///// body 끝 ///// -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+
+</body>
+</html>

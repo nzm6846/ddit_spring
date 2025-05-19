@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css" />
+    <!-- jQuery -->
+    <script src="/adminlte/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <title>Document</title>
+    <script>
+        //document 내 모든 엘리먼트(요소)가 로딩된 후에 실행
+        $(function(){
+            //아작나써유..(피)씨다타써
+            //contentType : 보내는 타입
+            //dataType : 응답타입
+            $.ajax({
+                url:"/api/articles/2",
+                type:"get",
+                dataType:"json",
+                success:function(result){
+                    //result{"id": 2,"title": "개똥이의 여행2","content": "즐거운 여행2"}
+                    console.log("result : ", result);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>글 상세보기</h2>
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Content</th>
+        </tr>
+        <!--
+        articleEntity : Article(id=1, title=개똥이의 모험, content=즐거운 모험)
+        model.addAttribute("article",articleEntity);
+
+        article의 사용 범위 내에 article에 담긴 id, title, content의 값으로 치환
+        -->
+        {{#article}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{title}}</td>
+                <td>{{content}}</td>
+            </tr>
+        {{/article}}
+    </table>
+    <a href="/articles" class="btn btn-primary">목록</a>
+    <a href="/articles/{{article.id}}/edit" class="btn btn-warning">수정</a>
+    <a href="/articles/{{article.id}}/delete" class="btn btn-danger">삭제</a>
+</body>
+</html>
