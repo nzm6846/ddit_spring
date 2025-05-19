@@ -22,16 +22,24 @@
     요청 파라미터 : request{title=개똥이의 모험, content = 즐거운 모험}
     요청 방식 : post
     -->
-    <form class="container" action="/articles/create" method="post">
+    {{articleEntity}}
+    <!-- 업데이트 쎄대여
+    UPDATE ARTICLE
+    SET    TITLE='개똥이개똥이', CONTENT='즐거워즐거워'
+    WHERE  ID=2;
+    -->
+    <form class="container" action="/articles/update" method="post">
+        <input type="hidden" name="id" value="{{articleEntity.id}}"/>
         <div class="mb-3">
             <label class="form-label">제목</label>
-            <input type="text" class="form-control" name="title" placeholder="입력" />
+            <input type="text" class="form-control" name="title" placeholder="입력" value="{{articleEntity.title}}"/>
         </div>
         <div class="mb-3">
             <label class="form-label">내용</label>
-            <textarea class="form-control" rows="3" name="content" placeholder="입력"></textarea>
+            <textarea class="form-control" rows="3" name="content" placeholder="입력">{{articleEntity.content}}</textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/articles/{{articleEntity.id}}" class="btn btn-secondary">뒤로가기</a>
     </form>
     <!-- ///// body 끝 ///// -->
 </body>
