@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css" />
+    <title>Document</title>
+</head>
+<body>
+<!--
+    요청 URI : /lprod/update
+    요청 파라미터 :
+    요청방식 : put
+    -->
+
+<!-- 폼 페이지 -->
+<!-- ///// body 시작 ///// -->
+<form class="container" action="/lprod/update" method="">
+    <div class="mb-3">
+        <label class="form-label">상품분류 번호</label>
+        <input type="text" class="form-control" name="lprodId" value="{{lprod.lprodId}}" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">상품분류 코드</label>
+        <input type="text" class="form-control" name="lprodGu" value="{{lprod.lprodGu}}" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">상품분류 명</label>
+        <input type="text" class="form-control" name="lprodNm" value="{{lprod.lprodNm}}" />
+    </div>
+    <button type="submit" class="btn btn-primary">Edit</button>
+    <a href="/lprod/{{lprod.lprodId}}" class="btn btn-secondary">Back</a>
+</form>
+<!-- ///// body 끝 ///// -->
+</body>
+</html>

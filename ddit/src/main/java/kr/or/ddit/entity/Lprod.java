@@ -2,6 +2,7 @@ package kr.or.ddit.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -9,6 +10,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Entity
+@Data
 public class Lprod {
     // 3. lprodId : 엔티티의 대푯값 지정
     // 3. GeneratedValue : 자동 생성 기능 추가(숫자가 자동으로 매겨짐)

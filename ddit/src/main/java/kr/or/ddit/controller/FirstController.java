@@ -4,6 +4,7 @@ package kr.or.ddit.controller;
 import kr.or.ddit.dto.ArticleForm;
 import kr.or.ddit.entity.Article;
 import kr.or.ddit.repository.ArticleRepository;
+import kr.or.ddit.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /*
 애너테이션(annotation)이란? 소스 코드에 추가해 사용하는 메타 데이터의 일종.
@@ -32,6 +34,9 @@ public class FirstController {
     //의존성 주입(Dependancy Injection)-DI
     @Autowired
     private ArticleRepository articleRepository;
+
+    @Autowired
+    private ArticleService articleService;
 
     //메서드 작성
     @GetMapping("/hi")
@@ -141,7 +146,7 @@ public class FirstController {
         // 데이터를 조회한 결과, 값이 있으면 articleEntity 변수에 값을 넣고 없으면
         //  null을 저장
         //articleEntity{id=1,content=소똥이,title=개똥이}
-        Article articleEntity = this.articleRepository.findById(id).orElse(null);//1번글
+        Article articleEntity = this.articleService.findById(id);//1번글
         log.info("show->articleEntity : " + articleEntity);
         //2. 모델에 데이터 등록하기
         //article이라는 이름으로 value인 articleEntity 객체 추가
@@ -162,12 +167,34 @@ public class FirstController {
         //findAll() 메서드의 반환 데이터 타입은 Iterable. List라서 불일치
         //첫째, 캐스팅(형변환). Iteratable, Collection, List 인터페이스의 상하 관계는
         // Iteratable이 가장 상위 인터페이스
-        ArrayList<Article> articleEntityList = this.articleRepository.findAll();
+        // 스프링은 인터페이스를 좋아해.(다형성. 팀장=> 순대국밥 먹읍시다(x), 국밥 먹읍시다(o)
+        ArrayList<Article> articleEntityList = this.articleService.findAll();
         //2. 모델에 데이터 등록하기(쌍쌍 쉼 쌍쌍)
         model.addAttribute("articleList",articleEntityList);
         //3. 뷰 페이지 설정하기
         // articles 디렉터리 안에 index.mustache 파일이 뷰 페이지로 설정
         //forwarding : mustache
+
+        //1.List와 ArrayList의 리턴 받는 차이점
+        //1-1. List로 받기
+        //fruits : ["Apple","Banana"]
+        List<String>fruits =  this.articleService.getStringList();
+        for(String fruit : fruits){
+            log.info("fruit : "+fruit);
+        }
+
+        //trimToSize() 메소드 : ArrayList의 빈 공간 제거
+        //fruits.trimToSize();
+
+        //1-2. ArrayList로 받기
+        //fruits : ["Apple","Banana"]
+        ArrayList<String>fruitsArrayList =  this.articleService.getStringArrayList();
+        for(String fruit : fruits){
+            log.info("fruit : "+fruit);
+        }
+
+        //trimToSize() 메소드 : ArrayList의 빈 공간 제거
+        fruitsArrayList.trimToSize();
         return "articles/index";
     }
 

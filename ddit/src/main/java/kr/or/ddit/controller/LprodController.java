@@ -3,6 +3,7 @@ package kr.or.ddit.controller;
 import kr.or.ddit.entity.Lprod;
 import kr.or.ddit.dto.LprodForm;
 import kr.or.ddit.repository.LprodRepository;
+import kr.or.ddit.service.LprodService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +17,13 @@ import java.util.Map;
 @Controller
 public class LprodController {
 
+
     //DI(Dependency Injection)
     @Autowired
     LprodRepository lprodRepository;
+
+    @Autowired
+    LprodService lprodService;
     /*
     2-1. 폼을 띄울 Get방식 요청(/lprod/new) Mapping. newArticleForm()메소드.
         return "lprod/new"; //forwarding
@@ -108,7 +113,8 @@ public class LprodController {
      */
     @GetMapping("/lprods")
     public String lprods(Model model){
-        ArrayList<Lprod> lprodEntityList = this.lprodRepository.findAll();
+        //Controller -> LprodService -> LprodServiceImpl -> findAll() 메소드 -> mapper의 findAll() 호출
+        ArrayList<Lprod> lprodEntityList = this.lprodService.findAll();
         log.info("lprods->lprodEntityList : " + lprodEntityList);
 
         model.addAttribute("lprodList",lprodEntityList);

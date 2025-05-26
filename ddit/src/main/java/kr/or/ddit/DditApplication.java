@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DditApplication {
 
 	public static void main(String[] args) {
-		System.out.println("Hello WS!!");
 
 		SpringApplication.run(DditApplication.class, args);
+		System.out.println("Hello WS!!");
 	}
 
 }

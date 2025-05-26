@@ -8,18 +8,18 @@ import lombok.ToString;
 @ToString
 public class LprodForm {
     //프로퍼티
-    private int lprodId;
+    private Long lprodId;
     private String lprodGu;
     private String lprodNm;
 
     //기본생성자 NoArgsConstructor
     //public LprodForm() {}
 
-    public int getLprodId() {
+    public Long getLprodId() {
         return lprodId;
     }
 
-    public void setLprodId(int lprodId) {
+    public void setLprodId(Long lprodId) {
         this.lprodId = lprodId;
     }
 
@@ -40,7 +40,7 @@ public class LprodForm {
     }
 
     public Lprod toEntity() {
-        Lprod lprod = new Lprod(null,this.lprodGu,this.lprodNm);
+        Lprod lprod = new Lprod(this.lprodId,this.lprodGu,this.lprodNm);
         return lprod;
     }
 
